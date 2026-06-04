@@ -17,12 +17,13 @@ Follow these steps directly inside your terminal environment to launch the stack
 
 4. kubectl get pods
 
-### To access the application
-
-http://localhost:8000 for web app
+### To access the application apply below port forwards
 
 kubectl port-forward svc/web 8000:8000 --address 0.0.0.0 &
 
-http://localhost:8081 for mongo-express
+http://localhost:8000 for web app
+
 
 kubectl port-forward svc/mongo-express 8081:8081 --address 0.0.0.0 &
+
+http://localhost:8081 for mongo-express
