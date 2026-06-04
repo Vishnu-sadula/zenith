@@ -26,7 +26,7 @@ spec:
               value: mongodb://mongo:27017/
             - name: PORT
               value: "8000"
-          image: web:v1 
+          image: vishnusai1/web:latest
           imagePullPolicy: IfNotPresent
           name: web
           ports:
