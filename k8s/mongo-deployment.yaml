@@ -1,26 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.38.0 (a8f5d1cbd)
-  labels:
-    io.kompose.service: mongo
   name: mongo
+  labels:
+    app: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: mongo
+      app: mongo
   strategy:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.38.0 (a8f5d1cbd)
       labels:
-        io.kompose.service: mongo
+        app: mongo
     spec:
       containers:
         - image: mongo:8.0-rc-noble
@@ -40,16 +34,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.38.0 (a8f5d1cbd)
-  labels:
-    io.kompose.service: mongo
   name: mongo
+  labels:
+    app: mongo
 spec:
   ports:
-    - name: "27017"
+    - name: '27017'
       port: 27017
       targetPort: 27017
   selector:
-    io.kompose.service: mongo
+    app: mongo
