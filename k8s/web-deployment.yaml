@@ -27,7 +27,7 @@ spec:
             - name: PORT
               value: "8000"
           image: vishnusai1/web:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always 
           name: web
           ports:
             - containerPort: 8000
