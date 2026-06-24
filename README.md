@@ -15,7 +15,7 @@ A highly available, production-ready microservices architecture showcasing advan
 
 ### 1. Provision Persistent Storage Layer
 ```bash
-kubectl apply -f k8s/mongo-pvc.yaml
+kubectl apply -f k8s/mongo-data-pvc.yaml
 ```
 ### 2. Deploy Applications & Database Workloads
 ```bash
