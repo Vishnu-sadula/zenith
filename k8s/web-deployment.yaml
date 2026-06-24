@@ -35,9 +35,11 @@ metadata:
   labels:
     app: web
 spec:
+  type: NodePort
   ports:
     - name: '8000'
       port: 8000
       targetPort: 8000
+      nodePort: 30001
   selector:
     app: web
