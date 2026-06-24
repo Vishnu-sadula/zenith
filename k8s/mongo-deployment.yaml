@@ -34,15 +34,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo-express
+  name: mongo
   labels:
-    app: mongo-express
+    app: mongo
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-    - name: '8081'
-      port: 8081
-      targetPort: 8081
-      nodePort: 30002
+    - name: mongodb
+      port: 27017
+      targetPort: 27017
   selector:
-    app: mongo-express
+    app: mongo

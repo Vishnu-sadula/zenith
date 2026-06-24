@@ -3,12 +3,10 @@ kind: Ingress
 metadata:
   name: zenith-ingress
   namespace: default
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  - host: app.local  # Routes your main Flask web application
+  - host: app.local
     http:
       paths:
       - path: /
@@ -18,7 +16,7 @@ spec:
             name: web
             port:
               number: 8000
-  - host: db.local   # Routes your Mongo-Express dashboard safely
+  - host: db.local
     http:
       paths:
       - path: /
@@ -28,4 +26,3 @@ spec:
             name: mongo-express
             port:
               number: 8081
-
