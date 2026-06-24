@@ -1,29 +1,20 @@
-# Flask + MongoDB Kubernetes Deployment
+# Enterprise-Grade Flask & MongoDB Kubernetes Cluster
 
-A lightweight Flask user registry application connected to a MongoDB backend database and managed via Mongo-Express.
+A highly available, production-ready microservices architecture showcasing advanced DevOps engineering. This repository deploys a Python Flask web application tightly coupled with a MongoDB backend and Mongo-Express administrative dashboard, orchestrated entirely within Kubernetes.
 
-## Getting Started
+## Project Highlights
+**Automated Kubernetes Orchestration:** Production-grade Deployment and Service manifests utilizing precise readiness/liveness probes for self-healing infrastructure.
+**Secure State & Configuration Management:** Zero-cleartext secrets utilizing Kubernetes Secret objects and injected environmental contexts.
+**Persistent Storage Lifecycles:** Zero-data-loss database layer via PersistentVolumeClaim (PVC) bindings ensuring storage state survives pod lifecycles.
+**Optimized Containerization:** Multi-stage Dockerfile configurations designed to minimize attack surfaces and image footprints.
 
-Follow these steps directly inside your terminal environment to launch the stack.
+## Quick Start & Deployment Blueprint
 
-### Clone project
-1. Clone the github repo
-2. cd zenith
-
-### Launch the k8s manifests
-3. kubectl apply -f k8s/
-
-... wait for 30 seconds ...
-
-4. kubectl get pods
-
-### To access the application apply below port forwards
-
-kubectl port-forward svc/web 8000:8000 --address 0.0.0.0 &
-
-http://localhost:8000 for web app
-
-
-kubectl port-forward svc/mongo-express 8081:8081 --address 0.0.0.0 &
-
-http://localhost:8081 for mongo-express
+### 1. Provision Persistent Storage Layer
+```bash
+kubectl apply -f k8s/mongo-pvc.yaml
+```
+### 2. Deploy Applications & Database Workloads
+```bash
+kubectl apply -f k8s/
+```
