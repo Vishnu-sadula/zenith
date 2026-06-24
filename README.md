@@ -21,3 +21,31 @@ kubectl apply -f k8s/mongo-pvc.yaml
 ```bash
 kubectl apply -f k8s/
 ```
+### 3. To Verify the Pods
+```bash
+kubectl get pods
+```
+### 4. Stop the Deployments and Services
+```bash
+kubectl delete -f k8s/
+```
+
+## Deploy using Docker Compose
+
+### 1. Launch the Stack
+Run the following command from the root directory of the repository:
+```bash
+docker-compose up -d
+```
+
+### 2. Verify Running Containers
+Check that all three services are up and healthy:
+```bash
+docker-compose ps
+```
+
+### 3. To Stop & Remove the Containers
+To stop the application and completely remove the containers while preserving your data volumes, run:
+```bash
+docker-compose down
+```
