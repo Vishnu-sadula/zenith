@@ -10,12 +10,16 @@ spec:
     matchLabels:
       app: mongo
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
         app: mongo
     spec:
+      serviceAccountName: zenith
       containers:
         - image: mongo:8.0-rc-noble
           name: flask-mongo
@@ -29,7 +33,7 @@ spec:
       volumes:
         - name: mongo-data
           persistentVolumeClaim:
-            claimName: mongo-data
+            claimName: mongo-data-pvc
 ---
 apiVersion: v1
 kind: Service

@@ -14,6 +14,7 @@ spec:
       labels:
         app: mongo-express
     spec:
+      serviceAccountName: zenith
       containers:
         - env:
             - name: ME_CONFIG_MONGODB_PORT
