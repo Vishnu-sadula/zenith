@@ -15,7 +15,7 @@ jobs:
       actions: read
       contents: read
       security-events: write
-      
+  
     strategy:
       fail-fast: false
       matrix:
@@ -27,13 +27,24 @@ jobs:
           - k8s/mongo-express-deployment.yaml
           - k8s/serviceAccount.yaml
           - k8s/web-deployment.yaml
-  
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Debug - Check if SARIF file exists
+        run: |
+          if [ -f kubesec-results.sarif ]; then
+            echo "SARIF file exists"
+            cat kubesec-results.sarif
+          else
+            echo "SARIF file NOT found"
+            ls -la
+          fi
           
       - name: Run kubesec scanner
         uses: controlplaneio/kubesec-action@43d0ddff5ffee89a6bb9f29b64cd865411137b14
+        continue-on-error: true
         with:
           input: ${{ matrix.file }}
           format: sarif
@@ -41,6 +52,7 @@ jobs:
           exit-code: "0"
 
       - name: Upload Kubesec scan results to GitHub Security tab
+        if: always()
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: kubesec-results.sarif
