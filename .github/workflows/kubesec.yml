@@ -22,7 +22,14 @@ jobs:
       - name: Run kubesec scanner
         uses: controlplaneio/kubesec-action@43d0ddff5ffee89a6bb9f29b64cd865411137b14
         with:
-          input: k8s/*.yaml
+          input: |
+            k8s/configMap.yaml
+            k8s/ingress.yaml
+            k8s/mongo-data-pvc.yaml
+            k8s/mongo-deployment.yaml
+            k8s/mongo-express-deployment.yaml
+            k8s/serviceAccount.yaml
+            k8s/web-deployment.yaml
           format: sarif
           output: kubesec-results.sarif
           exit-code: "0"
