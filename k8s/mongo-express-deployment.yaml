@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,7 +20,7 @@ spec:
       containers:
         - env:
             - name: ME_CONFIG_MONGODB_PORT
-              value: '27017'
+              value: "27017"
             - name: ME_CONFIG_MONGODB_SERVER
               value: mongo
             - name: ME_CONFIG_SITE_BASEURL
@@ -30,6 +31,7 @@ spec:
             - containerPort: 8081
               protocol: TCP
       restartPolicy: Always
+
 ---
 apiVersion: v1
 kind: Service
